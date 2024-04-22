@@ -1,8 +1,10 @@
+import Header from "@/components/utilities/Header";
+
 const Page = () => {
   return (
-    <div className="flex flex-col items-center">
-      <h3 className="text-2xl text-color-primary">Halaman Comments</h3>
-    </div>
+    <section className="mt-4">
+      <Header title={"My Comments"} />
+    </section>
   );
 };
 

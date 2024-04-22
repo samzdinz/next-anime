@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const UserActionButton = async () => {
   const user = await authUserSession();
-  const actionLabel = user ? "Sign out" : "SignIn";
+  const actionLabel = user ? "Sign out" : "Sign In";
   const actionUrl = user ? "/api/auth/signout" : "/api/auth/signin";
   return (
     <div className="text-color-primary flex gap-2 text-xl ">

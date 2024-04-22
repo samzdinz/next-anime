@@ -15,7 +15,7 @@ const Page = async () => {
         height={250}
         className="mb-4"
       />
-      <div className="flex flex-row">
+      <div className="flex flex-row gap-5">
         <Link
           href={"/users/dashboard/favorites"}
           className="bg-color-secondary p-2 flex mr-2 hover:bg-color-primary hover:text-color-dark rounded-md"
