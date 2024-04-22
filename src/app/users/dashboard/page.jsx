@@ -18,13 +18,13 @@ const Page = async () => {
       <div className="flex flex-row">
         <Link
           href={"/users/dashboard/favorites"}
-          className="bg-color-primary text-color-dark p-2 flex mr-2 hover:bg-color-secondary "
+          className="bg-color-secondary p-2 flex mr-2 hover:bg-color-primary hover:text-color-dark rounded-md"
         >
           My Favorites
         </Link>
         <Link
           href={"/users/dashboard/comments"}
-          className="bg-color-primary text-color-dark p-2 hover:bg-color-secondary"
+          className="bg-color-secondary p-2 hover:bg-color-primary hover:text-color-dark rounded-md"
         >
           My Comments
         </Link>
