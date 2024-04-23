@@ -1,16 +1,35 @@
 import { getAnimeResponse } from "@/libs/api-lib";
 import VideoPLayer from "@/components/utilities/VideoPlayer";
 import Image from "next/image";
+import FavoriteButton from "@/components/AnimeList/FavoriteButton";
+import { authUserSession } from "@/libs/auth-lib";
+import prisma from "@/libs/prisma";
+import Header from "@/components/utilities/Header";
 
 const Page = async ({ params: { id } }) => {
   const anime = await getAnimeResponse(`anime/${id}`);
-  console.log(anime);
+
+  const user = await authUserSession();
+
+  const favorite = await prisma.favorites.findFirst({
+    where: { user_email: user?.email, anime_mal_id: id },
+  });
+
   return (
     <>
-      <div className="text-color-primary p-4 text-2xl ">
+      <Header />
+      <div className="text-color-primary p-4 text-2xl">
         <h3>
           {anime.data.title} - {anime.data.year}
         </h3>
+        {!favorite && user && (
+          <FavoriteButton
+            anime_mal_id={id}
+            user_email={user?.email}
+            anime_title={anime.data.title}
+            anime_image={anime.data.images.webp.image_url}
+          />
+        )}
       </div>
       <div className="flex py-2 px-4 gap-2 ">
         <div className="w-32 flex flex-col text-color-primary justify-center items-center border border-color-primary">
