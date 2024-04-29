@@ -5,6 +5,8 @@ import FavoriteButton from "@/components/AnimeList/FavoriteButton";
 import { authUserSession } from "@/libs/auth-lib";
 import prisma from "@/libs/prisma";
 import Header from "@/components/utilities/Header";
+import CommentInput from "@/components/AnimeList/CommentInput";
+import CommentBox from "@/components/AnimeList/CommentBox";
 
 const Page = async ({ params: { id } }) => {
   const anime = await getAnimeResponse(`anime/${id}`);
@@ -60,6 +62,15 @@ const Page = async ({ params: { id } }) => {
         />
 
         <p className="text-color-primary text-justify">{anime.data.synopsis}</p>
+      </div>
+      <div className="p-4">
+        <CommentBox anime_mal_id={id} />
+        <CommentInput
+          anime_mal_id={id}
+          user_email={user?.email}
+          anime_title={anime.data.title}
+          username={user?.name}
+        />
       </div>
       <div>
         <VideoPLayer

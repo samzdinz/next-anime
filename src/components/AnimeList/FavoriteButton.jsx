@@ -24,6 +24,7 @@ const FavoriteButton = ({
     if (favorite.isCreated) {
       setIsCreated(true);
     }
+    return;
   };
 
   return (
